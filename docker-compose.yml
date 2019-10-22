@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    app:
+        build:
+        
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - PYTHON_VERSION=${PYTHON_VERSION}
+
+        image: takacsmark/flask-redis:1.0
+        environment:
+            - FLASK_ENV=development
+        ports:
+            - 801:5000
+    
+    redis:
+        image: redis=${redis_VERSION}
